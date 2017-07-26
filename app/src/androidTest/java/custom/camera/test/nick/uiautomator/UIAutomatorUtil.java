@@ -5,10 +5,18 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.By;
+import android.support.test.uiautomator.UiDevice;
 
 public class UIAutomatorUtil
 {
-    public static void toggleBluethoot() throws InterruptedException
+    private UiDevice mDevice;
+
+    public UIAutomatorUtil(UiDevice device)
+    {
+        mDevice = device;
+    }
+
+    public void toggleBluethoot() throws InterruptedException
     {
         Context context = InstrumentationRegistry.getContext();
 
@@ -19,28 +27,28 @@ public class UIAutomatorUtil
 
         Thread.sleep(20);
 
-        UIAutomatorGenericTest.mDevice.findObject(By.res("com.android.settings:id/switch_widget")).click();
+        mDevice.findObject(By.res("com.android.settings:id/switch_widget")).click();
 
-        UIAutomatorGenericTest.mDevice.pressBack();
+        mDevice.pressBack();
     }
 
-    public static void swipeRight()
+    public void swipeRight()
     {
-        UIAutomatorGenericTest.mDevice.swipe(600,600,200,600,20);
+        mDevice.swipe(600, 600, 200, 600, 20);
     }
 
-    public static void swipeLeft()
+    public void swipeLeft()
     {
-        UIAutomatorGenericTest.mDevice.swipe(200,600,600,600,20);
+        mDevice.swipe(200, 600, 600, 600, 20);
     }
 
-    public static void shortDropDownMenu()
+    public void shortDropDownMenu()
     {
-        UIAutomatorGenericTest.mDevice.swipe(10,10,10,60,2);
+        mDevice.swipe(10, 10, 10, 60, 2);
     }
 
-    public static void allDropDownMenu()
+    public void allDropDownMenu()
     {
-        UIAutomatorGenericTest.mDevice.swipe(10,10,10,600,50);
+        mDevice.swipe(10, 10, 10, 600, 50);
     }
 }

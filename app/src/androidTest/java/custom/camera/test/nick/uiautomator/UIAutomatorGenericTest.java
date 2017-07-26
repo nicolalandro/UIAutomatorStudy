@@ -10,55 +10,60 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static custom.camera.test.nick.uiautomator.UIAutomatorUtil.*;
-
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
 public class UIAutomatorGenericTest
 {
-    public static UiDevice mDevice;
 
+    private UIAutomatorUtil uiAutomatorUtil;
+    private UiDevice mDevice;
 
     @Before
     public void setUp() throws Exception
     {
         // Initialize UiDevice instance
         mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+
+        uiAutomatorUtil = new UIAutomatorUtil(mDevice);
     }
 
     @Test
     public void swipe() throws Exception
     {
-        swipeRight();
+        uiAutomatorUtil.swipeRight();
 
         Thread.sleep(2000);
 
-        swipeLeft();
+        uiAutomatorUtil.swipeLeft();
 
         Thread.sleep(2000);
 
-        shortDropDownMenu();
+        uiAutomatorUtil.shortDropDownMenu();
 
         Thread.sleep(2000);
+
+        mDevice.pressBack();
     }
 
     @Test
     public void showDropdownMenu() throws Exception
     {
-        allDropDownMenu();
+        uiAutomatorUtil.allDropDownMenu();
 
         Thread.sleep(2000);
+
+        mDevice.pressBack();
     }
 
     @Test
     public void bluetooth() throws Exception
     {
-        toggleBluethoot();
+        uiAutomatorUtil.toggleBluethoot();
 
         Thread.sleep(2000);
 
-        toggleBluethoot();
+        uiAutomatorUtil.toggleBluethoot();
     }
 
 }
