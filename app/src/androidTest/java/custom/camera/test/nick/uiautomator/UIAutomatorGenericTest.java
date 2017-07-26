@@ -15,7 +15,7 @@ import static custom.camera.test.nick.uiautomator.UIAutomatorUtil.*;
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
-public class UIAutomatorTest
+public class UIAutomatorGenericTest
 {
     public static UiDevice mDevice;
 
