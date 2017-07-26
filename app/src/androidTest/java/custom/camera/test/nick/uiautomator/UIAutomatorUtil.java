@@ -19,28 +19,28 @@ public class UIAutomatorUtil
 
         Thread.sleep(20);
 
-        UIAutomatorTest.mDevice.findObject(By.res("com.android.settings:id/switch_widget")).click();
+        UIAutomatorGenericTest.mDevice.findObject(By.res("com.android.settings:id/switch_widget")).click();
 
-        UIAutomatorTest.mDevice.pressBack();
+        UIAutomatorGenericTest.mDevice.pressBack();
     }
 
     public static void swipeRight()
     {
-        UIAutomatorTest.mDevice.swipe(600,600,200,600,20);
+        UIAutomatorGenericTest.mDevice.swipe(600,600,200,600,20);
     }
 
     public static void swipeLeft()
     {
-        UIAutomatorTest.mDevice.swipe(200,600,600,600,20);
+        UIAutomatorGenericTest.mDevice.swipe(200,600,600,600,20);
     }
 
     public static void shortDropDownMenu()
     {
-        UIAutomatorTest.mDevice.swipe(10,10,10,60,2);
+        UIAutomatorGenericTest.mDevice.swipe(10,10,10,60,2);
     }
 
     public static void allDropDownMenu()
     {
-        UIAutomatorTest.mDevice.swipe(10,10,10,600,50);
+        UIAutomatorGenericTest.mDevice.swipe(10,10,10,600,50);
     }
 }
