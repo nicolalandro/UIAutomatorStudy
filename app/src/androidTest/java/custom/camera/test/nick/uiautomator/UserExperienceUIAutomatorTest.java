@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
-public class AppUserExperienceTest
+public class UserExperienceUIAutomatorTest
 {
 
     private UIAutomatorUtil uiAutomatorUtil;
