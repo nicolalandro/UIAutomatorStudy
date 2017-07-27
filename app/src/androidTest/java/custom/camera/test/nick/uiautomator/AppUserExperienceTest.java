@@ -43,7 +43,7 @@ public class AppUserExperienceTest
     }
 
     @Test
-    public void xxx() throws Exception
+    public void assert_about_label() throws Exception
     {
         Thread.sleep(2000);
 
