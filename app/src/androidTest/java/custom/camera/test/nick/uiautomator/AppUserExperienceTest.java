@@ -6,12 +6,16 @@ import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
+import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
+import android.widget.TextView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(AndroidJUnit4.class)
@@ -42,6 +46,10 @@ public class AppUserExperienceTest
     public void xxx() throws Exception
     {
         Thread.sleep(2000);
+
+        UiObject textView = mDevice.findObject(new UiSelector().className(TextView.class).textContains("Hello World!"));
+
+        assertEquals("Hello World!" , textView.getText());
     }
 
 
