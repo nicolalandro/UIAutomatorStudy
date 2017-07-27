@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
@@ -31,5 +32,7 @@ public class UserExperienceEspressoTest
     public void assert_on_label() throws Exception
     {
         onView(withId(R.id.text_view)).check(matches(withText("Hello World!")));
+
+        onView(withText("Hello World!")).check(matches(isDisplayed()));
     }
 }
