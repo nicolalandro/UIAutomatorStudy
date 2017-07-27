@@ -44,6 +44,7 @@ public class UIAutomatorGenericTest
         Thread.sleep(2000);
 
         mDevice.pressBack();
+        Thread.sleep(20);
     }
 
     @Test
@@ -54,6 +55,7 @@ public class UIAutomatorGenericTest
         Thread.sleep(2000);
 
         mDevice.pressBack();
+        Thread.sleep(20);
     }
 
     @Test
