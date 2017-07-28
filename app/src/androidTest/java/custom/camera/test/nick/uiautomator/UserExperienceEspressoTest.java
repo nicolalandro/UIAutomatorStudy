@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -34,5 +35,15 @@ public class UserExperienceEspressoTest
         onView(withId(R.id.text_view)).check(matches(withText("Hello World!")));
 
         onView(withText("Hello World!")).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void assert_on_write() throws Exception
+    {
+        onView(withId(R.id.edit_text)).check(matches(withText("")));
+
+        onView(withId(R.id.edit_text)).perform(typeText("Hello you!"));
+
+        onView(withId(R.id.edit_text)).check(matches(withText("Hello you!")));
     }
 }
