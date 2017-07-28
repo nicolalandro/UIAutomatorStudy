@@ -9,6 +9,7 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -52,5 +53,17 @@ public class UserExperienceUIAutomatorTest
         assertEquals("Hello World!" , textView.getText());
     }
 
+    @Test
+    public void assert_about_write() throws Exception
+    {
+        Thread.sleep(2000);
 
+        UiObject editText = mDevice.findObject(new UiSelector().className(EditText.class));
+
+        assertEquals("" , editText.getText());
+
+        editText.setText("Hello you!");
+
+        assertEquals("Hello you!" , editText.getText());
+    }
 }

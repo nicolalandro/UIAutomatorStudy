@@ -30,7 +30,7 @@ public class UserExperienceEspressoTest
     }
 
     @Test
-    public void assert_on_label() throws Exception
+    public void assert_about_label() throws Exception
     {
         onView(withId(R.id.text_view)).check(matches(withText("Hello World!")));
 
@@ -38,7 +38,7 @@ public class UserExperienceEspressoTest
     }
 
     @Test
-    public void assert_on_write() throws Exception
+    public void assert_about_write() throws Exception
     {
         onView(withId(R.id.edit_text)).check(matches(withText("")));
 
