@@ -9,6 +9,7 @@ import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -65,5 +66,19 @@ public class UserExperienceUIAutomatorTest
         editText.setText("Hello you!");
 
         assertEquals("Hello you!" , editText.getText());
+    }
+
+    @Test
+    public void click_button_change_text_view_state() throws Exception
+    {
+        UiObject editText = mDevice.findObject(new UiSelector().className(EditText.class));
+        UiObject button = mDevice.findObject(new UiSelector().className(Button.class));
+
+        editText.setText("Hello you!");
+        button.click();
+
+        UiObject textView = mDevice.findObject(new UiSelector().className(TextView.class).textContains("Hello you!"));
+        assertEquals("Hello you!" , textView.getText());
+
     }
 }
