@@ -59,4 +59,18 @@ public class UserExperienceEspressoTest
 
         onView(withId(R.id.text_view)).check(matches(withText("Hello you!")));
     }
+
+    @Test
+    public void click_button_change_text_view_state_with_upper_case_clicked() throws Exception
+    {
+        onView(withId(R.id.text_view)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.edit_text)).perform(typeText("Hello you!"));
+
+        onView(withId(R.id.checkBox)).perform(click());
+
+        onView(withId(R.id.button)).perform(click());
+
+        onView(withId(R.id.text_view)).check(matches(withText("HELLO YOU!")));
+    }
 }
