@@ -7,6 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiObject;
+import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.widget.Button;
@@ -128,5 +129,39 @@ public class UserExperienceUIAutomatorTest
         UiObject listView = mDevice.findObject(new UiSelector().className(ListView.class));
         UiObject firstListViewElement = listView.getChild(new UiSelector().clickable(true).index(0));
         assertEquals("PIPPO" , firstListViewElement.getText());
+    }
+
+    @Test
+    public void add_much_element_to_list() throws Exception
+    {
+        addLowerAndUpperCaseTextToListView("pippo");
+
+        addLowerAndUpperCaseTextToListView("pluto");
+
+        addLowerAndUpperCaseTextToListView("paperino");
+
+        addLowerAndUpperCaseTextToListView("topolino");
+
+        mDevice.pressBack();
+
+        UiScrollable listViewScrollable = new UiScrollable(new UiSelector().className(ListView.class));
+        listViewScrollable.scrollToEnd(20);
+
+        UiObject listView = mDevice.findObject(new UiSelector().className(ListView.class));
+        UiObject lastListViewElement = listView.getChild(new UiSelector().clickable(true).index(6)); //6 perche sono 6 gli elementi visibili, questo test dipende dal dispostivio
+        assertEquals("TOPOLINO" , lastListViewElement.getText());
+    }
+
+    private void addLowerAndUpperCaseTextToListView(String text) throws UiObjectNotFoundException
+    {
+        UiObject editText = mDevice.findObject(new UiSelector().className(EditText.class));
+        UiObject button = mDevice.findObject(new UiSelector().className(Button.class));
+        UiObject checkBox = mDevice.findObject(new UiSelector().className(CheckBox.class));
+
+        editText.setText(text);
+        button.click();
+        checkBox.click();
+        button.click();
+        checkBox.click();
     }
 }
