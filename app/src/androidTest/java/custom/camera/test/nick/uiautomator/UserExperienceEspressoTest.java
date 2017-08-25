@@ -111,33 +111,13 @@ public class UserExperienceEspressoTest
     @Test
     public void add_much_element_to_list() throws Exception
     {
-        onView(withId(R.id.edit_text)).perform(typeText("pippo"));
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.edit_text)).perform(clearText());
+        addLowerAndUpperCaseTextToListView("pippo");
 
-        onView(withId(R.id.edit_text)).perform(typeText("pluto"));
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.edit_text)).perform(clearText());
+        addLowerAndUpperCaseTextToListView("pluto");
 
-        onView(withId(R.id.edit_text)).perform(typeText("paperino"));
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.edit_text)).perform(clearText());
+        addLowerAndUpperCaseTextToListView("paperino");
 
-        onView(withId(R.id.edit_text)).perform(typeText("topolino"));
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.checkBox)).perform(click());
-        onView(withId(R.id.edit_text)).perform(clearText());
+        addLowerAndUpperCaseTextToListView("topolino");
 
         pressBack();
 
@@ -145,5 +125,15 @@ public class UserExperienceEspressoTest
                 .inAdapterView(CoreMatchers.allOf(withId(R.id.list_view), isDisplayed()))
                 .atPosition(7)
                 .check(matches(withText("TOPOLINO")));
+    }
+
+    private void addLowerAndUpperCaseTextToListView(String text)
+    {
+        onView(withId(R.id.edit_text)).perform(typeText(text));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.edit_text)).perform(clearText());
     }
 }
