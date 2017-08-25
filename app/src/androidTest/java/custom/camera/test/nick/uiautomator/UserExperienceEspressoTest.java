@@ -88,4 +88,19 @@ public class UserExperienceEspressoTest
                 .atPosition(0)
                 .check(matches(withText("pippo")));
     }
+
+    @Test
+    public void add_uppercase_element_to_list() throws Exception
+    {
+        onView(withId(R.id.edit_text)).perform(typeText("pippo"));
+
+        onView(withId(R.id.checkBox)).perform(click());
+
+        onView(withId(R.id.button)).perform(click());
+
+        onData(anything())
+                .inAdapterView(withId(R.id.list_view))
+                .atPosition(0)
+                .check(matches(withText("PIPPO")));
+    }
 }

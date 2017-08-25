@@ -113,4 +113,20 @@ public class UserExperienceUIAutomatorTest
         UiObject firstListViewElement = listView.getChild(new UiSelector().clickable(true).index(0));
         assertEquals("pippo" , firstListViewElement.getText());
     }
+
+    @Test
+    public void add_uppercase_element_to_list() throws Exception
+    {
+        UiObject editText = mDevice.findObject(new UiSelector().className(EditText.class));
+        UiObject button = mDevice.findObject(new UiSelector().className(Button.class));
+        UiObject checkBox = mDevice.findObject(new UiSelector().className(CheckBox.class));
+
+        editText.setText("pippo");
+        checkBox.click();
+        button.click();
+
+        UiObject listView = mDevice.findObject(new UiSelector().className(ListView.class));
+        UiObject firstListViewElement = listView.getChild(new UiSelector().clickable(true).index(0));
+        assertEquals("PIPPO" , firstListViewElement.getText());
+    }
 }
