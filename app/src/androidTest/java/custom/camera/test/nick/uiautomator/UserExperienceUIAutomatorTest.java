@@ -12,6 +12,7 @@ import android.support.test.uiautomator.UiSelector;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -97,5 +98,19 @@ public class UserExperienceUIAutomatorTest
         UiObject textView = mDevice.findObject(new UiSelector().className(TextView.class).textContains("HELLO YOU!"));
         assertEquals("HELLO YOU!" , textView.getText());
 
+    }
+
+    @Test
+    public void add_element_to_list() throws Exception
+    {
+        UiObject editText = mDevice.findObject(new UiSelector().className(EditText.class));
+        UiObject button = mDevice.findObject(new UiSelector().className(Button.class));
+
+        editText.setText("pippo");
+        button.click();
+
+        UiObject listView = mDevice.findObject(new UiSelector().className(ListView.class));
+        UiObject firstListViewElement = listView.getChild(new UiSelector().clickable(true).index(0));
+        assertEquals("pippo" , firstListViewElement.getText());
     }
 }
