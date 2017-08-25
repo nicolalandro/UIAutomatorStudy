@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,6 +13,8 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -19,6 +22,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
+import static org.hamcrest.Matchers.instanceOf;
 
 @RunWith(AndroidJUnit4.class)
 public class UserExperienceEspressoTest
@@ -102,5 +106,44 @@ public class UserExperienceEspressoTest
                 .inAdapterView(withId(R.id.list_view))
                 .atPosition(0)
                 .check(matches(withText("PIPPO")));
+    }
+
+    @Test
+    public void add_much_element_to_list() throws Exception
+    {
+        onView(withId(R.id.edit_text)).perform(typeText("pippo"));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.edit_text)).perform(clearText());
+
+        onView(withId(R.id.edit_text)).perform(typeText("pluto"));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.edit_text)).perform(clearText());
+
+        onView(withId(R.id.edit_text)).perform(typeText("paperino"));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.edit_text)).perform(clearText());
+
+        onView(withId(R.id.edit_text)).perform(typeText("topolino"));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.checkBox)).perform(click());
+        onView(withId(R.id.edit_text)).perform(clearText());
+
+        pressBack();
+
+        onData(instanceOf(String.class))
+                .inAdapterView(CoreMatchers.allOf(withId(R.id.list_view), isDisplayed()))
+                .atPosition(7)
+                .check(matches(withText("TOPOLINO")));
     }
 }
