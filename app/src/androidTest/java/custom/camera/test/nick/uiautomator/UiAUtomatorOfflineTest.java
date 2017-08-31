@@ -9,7 +9,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.Until;
-import android.widget.RadioButton;
 import android.widget.Switch;
 
 import org.junit.Before;
